@@ -1,0 +1,14 @@
+{
+  "name": "pi-air-quality-reader",
+  "version": "0.0.1",
+  "description": "A quick and dirty Javascript equivalent of the Python example code at https://learn.adafruit.com/pm25-air-quality-sensor/python-and-circuitpython.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "VirtualWolf <virtualwolf@virtualwolf.org>",
+  "license": "ISC",
+  "dependencies": {
+    "serialport": "^8.0.6"
+  }
+}
