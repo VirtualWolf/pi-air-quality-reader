@@ -54,20 +54,22 @@ parser.on('data', function(buffer) {
 
     const check = data.slice(0, 30).reduce((a, b) => a + b);
 
-    console.log({
-        pm10_standard,
-        pm25_standard,
-        pm100_standard,
-        pm10_env,
-        pm25_env,
-        pm100_env,
-        particles_3um,
-        particles_5um,
-        particles_10em,
-        particles_25um,
-        particles_50um,
-        particles_100um,
-
-    })
-
+    if (check !== checksum) {
+        console.log('Checksum didn\'t match, skipping reading.')
+    } else {
+        console.log({
+            pm10_standard,
+            pm25_standard,
+            pm100_standard,
+            pm10_env,
+            pm25_env,
+            pm100_env,
+            particles_3um,
+            particles_5um,
+            particles_10em,
+            particles_25um,
+            particles_50um,
+            particles_100um,
+        });
+    }
 });
