@@ -92,12 +92,13 @@ function extractData(buffer: Buffer) {
         return;
     }
 
-    const frame = [];
+    const frame: number[] = [];
 
-    for (let i = 4; i + 1 < data.length; i += 2) {
-        const f = (data[i] << 8) + data[i + 1];
-        frame.push(f);
-    }
+    data.slice(4).forEach((element, index, array) => {
+        if (index % 2 === 0) {
+            frame.push((array[index] << 8) + array[index + 1])
+        }
+    });
 
     const [
         pm10_standard,
