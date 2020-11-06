@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  reader:
+    image: virtualwolf/pi-air-quality-reader:latest
+    ports:
+      - ${PORT}:3000
+    restart: unless-stopped
+    devices:
+      - /dev/gpiomem:/dev/gpiomem
+      - /dev/ttyS0:/dev/ttyS0
