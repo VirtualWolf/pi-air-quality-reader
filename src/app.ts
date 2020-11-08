@@ -1,17 +1,17 @@
 import express from 'express';
-import { readSensor } from './lib/sensor';
+import cors from 'cors';
+import { Sensor } from './lib/sensor';
+
+const sensor = new Sensor();
 
 const app = express();
 
-app.get('/', async (req, res) => {
-    try {
-        return res.json(await readSensor());
-    } catch (err) {
-        console.error(`[${new Date()}] Error from sensor: `, err);
+app.use(cors());
 
-        return res.status(500).json(err);
-    }
+app.get('/', async (req, res) => {
+    return res.json(sensor.getData());
 });
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
